@@ -1,0 +1,19 @@
+
+.data {
+    color: #333;
+}
+
+.zero {
+    color: #fff;
+    opacity: 0.1;
+}
+
+.blank {
+    background: red;
+}
+
+th {
+    background: white;
+    position: sticky;
+    top: 0; /* Don't forget this, required for the stickiness */
+  }
