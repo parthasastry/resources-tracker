@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Table, Form, Row, Col } from "react-bootstrap";
+import { Container, Table, Form, Row, Col, InputGroup } from "react-bootstrap";
 import MySpinner from "./MySpinner";
 
 function getData(dates, resource, data) {
@@ -13,7 +13,7 @@ function getData(dates, resource, data) {
         <td>{d["Skill"]}</td>
         <td>{d["Project"]}</td>
         {dates.map((h) => {
-          return  d[h] === 0 ? <td></td> : <td>{d[h]}</td>;
+          return d[h] === 0 ? <td></td> : <td>{d[h]}</td>;
         })}
       </tr>
     );
@@ -41,7 +41,7 @@ const Availability = () => {
 
   const onChange = (e) => {
     e.preventDefault();
-    const searchString = e.target.value
+    const searchString = e.target.value;
     const newResult = baseData.filter((d) =>
       d["Resource"].toLowerCase().includes(searchString.toLowerCase())
     );
@@ -51,23 +51,18 @@ const Availability = () => {
 
   const searchForm = (
     <Container>
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Row>
-            <Col>
-              <Form.Control
-                type="text"
-                placeholder="Search for Resource"
-                onChange={onChange}
-              />
-            </Col>
-          </Row>
-
-          <Form.Text className="text-muted">
-            You can enter partial text
-          </Form.Text>
+      <Form.Row>
+        <Form.Group as={Col}>
+          <InputGroup>
+            <InputGroup.Prepend>
+              <InputGroup.Text>
+              <i className="fas fa-search"></i>
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <Form.Control type="text" placeholder="Search for specific resource here.." onChange={onChange} />
+          </InputGroup>
         </Form.Group>
-      </Form>
+      </Form.Row>
     </Container>
   );
 
@@ -86,7 +81,9 @@ const Availability = () => {
         <th>Skill</th>
         <th>Project</th>
         {headings.map((h) => {
-          return h.includes("2021") ? <th key={h}>{h.substring(6, 10)}</th> : <th key={h}></th>;
+          const month_day = h.split("-");
+          const month_day_display = month_day[1] + "/" + month_day[2];
+          return h.includes("2021") ? <th key={h}>{month_day_display}</th> : "";
         })}
       </tr>
     </thead>
@@ -96,7 +93,7 @@ const Availability = () => {
     const resourceData = getData(dates, resource, result);
     const renderResource = resource === "" ? "Not Assigned" : resource;
     return (
-      <div>
+      <div className="m-1">
         <h3>{renderResource}</h3>
         <Table striped bordered hover size="sm">
           {tableHead}
