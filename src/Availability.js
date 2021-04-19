@@ -25,7 +25,6 @@ function getData(dates, resource, data) {
 const Availability = () => {
   const [result, setResult] = useState([]);
   const [baseData, setBaseData] = useState([]);
-  const [searchResource, setSearchResource] = useState("");
 
   useEffect(() => {
     const url =
@@ -42,8 +41,9 @@ const Availability = () => {
 
   const onChange = (e) => {
     e.preventDefault();
+    const searchString = e.target.value
     const newResult = baseData.filter((d) =>
-      d["Resource"].toLowerCase().includes(e.target.value)
+      d["Resource"].toLowerCase().includes(searchString.toLowerCase())
     );
     setResult(newResult);
     console.log(newResult);
@@ -109,7 +109,7 @@ const Availability = () => {
   return (
     <div>
       {searchForm}
-      {searchResource}
+
       {result.length > 0 ? renderData : <MySpinner />}
     </div>
   );
