@@ -17,6 +17,9 @@ const Header = () => {
           <LinkContainer to="/rr" className="text-white">
             <Nav.Link>Opportunities</Nav.Link>
           </LinkContainer>
+          <LinkContainer to="/availability" className="text-white">
+            <Nav.Link>Availability</Nav.Link>
+          </LinkContainer>
         </Container>
       </Navbar>
     </header>

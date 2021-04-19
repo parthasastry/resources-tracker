@@ -5,6 +5,7 @@ import Header from "./Header";
 import Heatmap from "./Heatmap";
 import MySpinner from './MySpinner'
 import ResReq from './ResReq'
+import Availability from './Availability'
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -30,6 +31,11 @@ const App = () => {
         <Route path="/rr" exact>
           <h1 className="text-center">Opportunities</h1>
           <ResReq />
+        </Route>
+
+        <Route path="/availability" exact>
+          <h1 className="text-center">Resource Availability and Opportunities</h1>
+          <Availability />
         </Route>
       </Switch>
     </Router>

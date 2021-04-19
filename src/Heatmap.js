@@ -22,7 +22,7 @@ export class Heatmap extends Component {
                   colors: ['#333']
                 },
                 formatter: function(val) {
-                  return val == 0 ? '' : Math.floor(val) 
+                  return val === 0 ? '' : Math.floor(val) 
                 }
               },
               stroke: {
