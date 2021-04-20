@@ -11,6 +11,7 @@ function getData(dates, resource, data) {
         <td>{d["Type"]}</td>
         <td>{d["RR"]}</td>
         <td>{d["Skill"]}</td>
+        <td>{d["Specialization"]}</td>
         <td>{d["Project"]}</td>
         {dates.map((h) => {
           return d[h] === 0 ? <td></td> : <td>{d[h]}</td>;
@@ -79,6 +80,7 @@ const Availability = () => {
         <th>Type</th>
         <th>RR</th>
         <th>Skill</th>
+        <th>Specialization</th>
         <th>Project</th>
         {headings.map((h) => {
           const month_day = h.split("-");
